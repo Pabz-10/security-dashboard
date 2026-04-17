@@ -1,4 +1,4 @@
-# NetWatch - Network Security Monitoring Dashboard
+# Security Monitoring Dashboard
 
 ## Project Overview
 NetWatch is a lightweight Security Information and Event Management (SIEM) prototype designed to demonstrate core concepts of log analysis, threat detection, and security visualization. It parses SSH authentication logs to identify common attack patterns and displays them on a centralized dashboard.
