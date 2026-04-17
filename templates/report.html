@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetWatch - Security Report</title>
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --text-color: #e9ecef;
+            --accent-color: #0f3460;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: var(--accent-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .container { padding: 2rem; max-width: 800px; margin: auto; }
+        .report-section {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>NetWatch Security</h1>
+        <ul>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/alerts">Alerts</a></li>
+            <li><a href="/report">Report</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="report-section">
+            <h2>Security Summary Report</h2>
+            <div class="stat-item">
+                <span>Total Events Flagged:</span>
+                <strong>{{ total_alerts }}</strong>
+            </div>
+            <div class="stat-item">
+                <span>Most Common Attack Type:</span>
+                <strong>{{ most_common_type }}</strong>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>Top Threat Sources (IP)</h2>
+            {% for ip, count in top_ips %}
+            <div class="stat-item">
+                <span>{{ ip }}</span>
+                <strong>{{ count }} alerts</strong>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
